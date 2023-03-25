@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% static 'images' as baseURL %}
+{% block title %}HomePage{% endblock title %} 
+
+    {% block content %}
+
+<div>
+    {% for message in messages %}
+    <h5>
+        {{message}}
+    </h5>
+    {% endfor %}
+</div>
+
+    <div class="w-75 m-auto mt-5">
+        
+        <p class="text-muted fs-4">Update a post</p>
+        <form action="" method="post" class="p-4 rounded" style="background: rgba(71, 68, 68, 0.185);">
+            {% csrf_token %}
+            <input type="text" name="title" id=""  placeholder="Your title" class="form-control" value="{{ post.post_title }}"><br>
+            <input type="file" name="image" id="" class="form-control"><br>
+            <textarea name="content" id="" cols="30" rows="5" class="form-control" placeholder="Blog Post">{{ post.post_content }}</textarea><br>
+            <input type="submit" value="Update" class="btn btn-success">
+        </form>
+    </div>
+    {% endblock content %}

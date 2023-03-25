@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% static 'images' as baseURL %}
+{% block title %}HomePage{% endblock title %} 
+
+    {% block content %}
+
+<div>
+    {% for message in messages %}
+    <h5>
+        {{message}}
+    </h5>
+    {% endfor %}
+</div>
+
+    <div class="w-75 m-auto mt-5">
+        
+        <marquee class="h5 px-3 py-1 card bg-secondary text-white" style="width: fit-content;">Hey, {{user.username.title}}</marquee><br>
+        <p class="text-muted fs-4">Create a post</p>
+        <form action="" method="post" class="p-4 rounded" style="background: rgba(71, 68, 68, 0.185);">
+            {% csrf_token %}
+            <input type="text" name="title" id=""  placeholder="Your title" class="form-control"><br>
+            <input type="file" name="image" id="" class="form-control"><br>
+            <textarea name="content" id="" cols="30" rows="5" class="form-control" placeholder="Blog Post"></textarea><br>
+            <input type="submit" value="Post" class="btn btn-success">
+        </form>
+        {% for blog in blogs reversed %}
+        <div class="card p-4 mt-5 mb-3">
+            {% if blog.img %}
+            <img src="{{ blog.img.url }}" alt="">
+            <hr>
+            {% endif %}
+        <span class="h2">{{ blog.post_title.title }}</span> 
+        <div class="d-flex align-items-center justify-content-between">
+            <div>   
+        <i class="fa fa-calendar-alt text-muted"></i>          
+            <small class="text-muted small fw-bold px-2"> {{blog.date}} </small>
+        </div>
+        <div class="">
+            <small>
+                <a href="/delete/{{ blog.id }}" class="text-danger">
+                    <i class="fa fas fa-trash-alt h6"></i>
+                </a>
+                &nbsp;
+                <a href="/update/{{ blog.id }}">
+                    <i class="fa fa-pen-square text-primary h6"></i>
+                </a>
+            </small>
+        </div>
+            </div>
+            <hr>
+            <p class="text-muted">{{ blog.post_content }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock content %}

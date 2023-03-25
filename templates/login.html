@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock title %} 
+
+{% block content %}
+<div>
+    {% for message in messages %}
+    <h5>
+        {{message}}
+    </h5>
+    {% endfor %}
+</div>
+
+<div>
+    <form action="" method="post" class="px-lg-5 p-5" style="
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-top: 3px solid rgb(238, 213, 144);
+    margin: 7rem auto 0 auto;
+    width: 25rem;
+  ">
+   <h2 class="text-center text-muted d-flex justify-content-center mb-5">Login</h2>
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username" class="form-control"><br>
+        <input type="password" name="password" placeholder="password" class="form-control"><br>
+        <input type="submit" value="Login" class="btn btn-success text-light border-0 ">
+    </form>
+</div>
+{% endblock content %}

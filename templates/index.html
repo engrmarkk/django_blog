@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock title %} 
+
+{% block header %}
+<!-- <div style=" padding: 2.5rem 0;" class="">
+    <h2 class="text-center text-muted d-flex justify-content-center">Blog</h2>
+</div> -->
+{% endblock header %}
+{% block content %}
+<div>
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+        <h5>
+            {{message}}
+        </h5>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <h4 class="mt-5">Welcome {{user.username.title}}</h4>
+    {% endif %}
+
+    <div class="row row-cols-lg-3 w-100 m-auto g-3">
+        {% for data in datas %}
+      <!-- first -->
+    <div class="d-flex flex-column col-lg" >
+        <div class="p-3 border bg-white">
+            <h3 class="">
+                <a href="/display/{{data.id}}" class="text-decoration-none text-muted">
+                {{ data.post_title.title }}
+            </a>
+            </h3>
+            <div>
+                <i class="fa fa-user small text-muted"></i>
+                {% if data.user.last_name %}
+                <small class="h6">{{ data.user.last_name.title }} {{ data.user.first_name.title }}</small>
+                {% else %}
+                <small class="h6">{{ data.user.username.title }}  </small>
+                {% endif %}
+              <small class="text-muted mx-4 small">{{ data.date }}</small>
+            </div>
+            <p class="mt-4 border-top">
+                {{ data.post_content|truncatewords:5 }}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+     </div>
+</div>
+{% endblock content %}

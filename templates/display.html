@@ -1,0 +1,48 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% static 'images' as baseURL %}
+{% block title %}Display Post{% endblock title %} 
+
+    {% block content %}
+
+<div>
+    {% for message in messages %}
+    <h5>
+        {{message}}
+    </h5>
+    {% endfor %}
+</div>
+
+    <div class="w-75 m-auto mt-5">
+        
+        
+        <div class="card p-4 mt-5 mb-3">
+            {% if post.img %}
+            <img src="{{ blog.img.url }}" alt="post image">
+            <hr>
+            {% endif %}
+        <span class="h2">{{ post.post_title.title }}</span> 
+        <div class="d-flex align-items-center justify-content-between">
+            <div>   
+        <i class="fa fa-calendar-alt text-muted"></i>          
+            <small class="text-muted small fw-bold px-2"> {{post.date}} </small>
+        </div>
+        {% if user == post.user %}
+        <div class="">
+            <small>
+                <a href="/delete/{{ post.id }}" class="text-danger">
+                    <i class="fa fas fa-trash-alt h6"></i>
+                </a>
+                &nbsp;
+                <a href="/update/{{ post.id }}">
+                    <i class="fa fa-pen-square text-primary h6"></i>
+                </a>
+            </small>
+        </div>
+        {% endif %}
+            </div>
+            <hr>
+            <p class="text-muted">{{ post.post_content }}</p>
+        </div>
+    </div>
+    {% endblock content %}
