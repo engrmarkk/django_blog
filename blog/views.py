@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import auth
+from django.contrib.auth.decorators import login_required
 from .models import User, BlogPost
+
 
 # Create your views here.
 def index(request):
@@ -10,6 +12,7 @@ def index(request):
     return render(request, "index.html", {"datas": datas})
 
 
+@login_required
 def welcomepage(request):
     blogs = BlogPost.objects.filter(user=request.user)
     if request.method == "POST":
@@ -31,6 +34,8 @@ def welcomepage(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -48,6 +53,8 @@ def login(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect("/")
     if request.method == "POST":
         first_name = request.POST.get("firstname")
         last_name = request.POST.get("lastname")
@@ -81,16 +88,21 @@ def register(request):
     return render(request, "register.html")
 
 
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect("/")
 
+
+@login_required
 def delete_post(request, post_id):
     post = BlogPost.objects.get(id=post_id)
     post.delete()
     messages.success(request, "Post deleted successfully")
     return redirect("/welcome")
 
+
+@login_required
 def update_post(request, post_id):
     post = BlogPost.objects.get(id=post_id)
     if request.method == "POST":
@@ -108,6 +120,8 @@ def update_post(request, post_id):
         return redirect("/welcome")
     return render(request, "update.html", {'post': post})
 
+
+@login_required
 def display_post(request, post_id):
     post = BlogPost.objects.get(id=post_id)
     return render(request, 'display.html', {'post': post})
