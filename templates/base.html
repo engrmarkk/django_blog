@@ -72,9 +72,11 @@
         
             <!-- If the user is not logged in, this nav links appears -->
             <ul class="navbar-nav ms-auto">
+              {% if user.is_authenticated %}
               <li class="nav-item">
                 <a href="/welcome" class="nav-link">Post</a>
               </li>
+              {% endif %}
               <li class="nav-item">
                 <a href="" class="nav-link">About</a>
               </li>
