@@ -13,11 +13,11 @@
     {% endfor %}
 </div>
 
-    <div class="w-75 m-auto mt-5">
+    <div class="display m-auto mt-5">
         
         <marquee class="h5 px-3 py-1 card bg-secondary text-white" style="width: fit-content;">Hey, {{user.username.title}}</marquee><br>
         <p class="text-muted fs-4">Create a post</p>
-        <form action="" method="post" class="p-4 rounded" style="background: rgba(71, 68, 68, 0.185);">
+        <form action="" method="post" class="p-4 rounded card">
             {% csrf_token %}
             <input type="text" name="title" id=""  placeholder="Your title" class="form-control"><br>
             <input type="file" name="image" id="" class="form-control"><br>
