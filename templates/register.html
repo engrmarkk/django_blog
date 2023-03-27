@@ -13,20 +13,24 @@
 </div>
 
 <div>
-    <form action="" method="post" class="w-75 px-lg-5 p-5" style="
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-top: 3px solid rgb(238, 144, 144);
+    <form action="" method="post" class="px-lg-5 p-5 card" style="
     margin: 7rem auto 2rem auto;
   ">
    <h2 class="text-center text-muted d-flex justify-content-center mb-5">Register</h2>
         {% csrf_token %}
+        <div class="w-100" id="register">
+            <div class="w-100 px-2" style="display: flex; flex-direction: column;">
         <input type="text" name="firstname" id="" placeholder="First Name" class="form-control"><br>
         <input type="text" name="lastname" id="" placeholder="Last Name" class="form-control"><br>
         <input type="email" name="email" placeholder="Email" class="form-control"><br>
+    </div>
+    <div class="w-100 px-2" style="display: flex; flex-direction: column;">
         <input type="text" name="username" id="" placeholder="Userame" class="form-control"><br>
         <input type="password" name="password" placeholder="Password" class="form-control"><br>
         <input type="password" name="confirmpassword" placeholder="Confirm password" class="form-control"><br>
-        <input type="submit" value="Login" class="btn btn-success text-light border-0 ">
+    </div>
+</div>
+    <input type="submit" value="Login" class="btn btn-success text-light border-0 d-flex justify-content-center m-auto w-25">
     </form>
 </div>
 {% endblock content %}
