@@ -4,11 +4,13 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 from .models import User, BlogPost
+import random
 
 
 # Create your views here.
 def index(request):
-    datas = BlogPost.objects.all()
+    datas = list(BlogPost.objects.all())
+    random.shuffle(datas)
     return render(request, "index.html", {"datas": datas})
 
 
