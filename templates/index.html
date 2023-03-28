@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %}Home{% endblock title %} {% block
-header %}
+{% extends 'base.html' %} {% block title %}Home{% endblock title %} 
+{% block header %}
 <!-- <div style=" padding: 2.5rem 0;" class="">
     <h2 class="text-center text-muted d-flex justify-content-center">Blog</h2>
 </div> -->
@@ -36,8 +36,7 @@ header %}
           ></i>
           {% if data.user.last_name %}
           <small class="h6 text-muted" style="font-size: 0.75rem"
-            >{{ data.user.last_name.title }} {{ data.user.first_name.title
-            }}</small
+            >{{ data.user.last_name.title }} {{ data.user.first_name.title }}</small
           >
           {% else %}
           <small class="h6 text-muted" style="font-size: 0.75rem"
