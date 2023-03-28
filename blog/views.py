@@ -123,7 +123,6 @@ def update_post(request, post_id):
     return render(request, "update.html", {'post': post})
 
 
-@login_required
 def display_post(request, post_id):
     post = BlogPost.objects.get(id=post_id)
     return render(request, 'display.html', {'post': post})
