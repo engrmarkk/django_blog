@@ -36,78 +36,64 @@
     <!-- Block to be inherited from this file by other files if need be -->
     {% block head %}{% endblock head %}
     <!-- Css link -->
-    <link
-      rel="stylesheet"
-      href="{% static '/style.css' %}"
-    />
+    <link rel="stylesheet" href="{% static '/style.css' %}" />
     <!-- Title , the block to be inherited by other files so as to add a title for each page-->
-    <title>Blog -
-      {% block title %}{% endblock title %}
-    </title>
+    <title>Blog - {% block title %}{% endblock title %}</title>
   </head>
 
-
-<body style="background: #002538 !important;">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark py-2" id="nav" style="background: #011e2c !important;">
-        <div class="container">
-          <!-- The navbar brand -->
-          <a href="/"
-          class="navbar-brand fw-bold"
-            >Django Blog</a>
-          <!-- Bootstrap nav toggler -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navmenu"
-            aria-controls="navmenu"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- The nav links -->
-          <div class="collapse navbar-collapse" id="navmenu">
-        
-            <!-- If the user is not logged in, this nav links appears -->
-            <ul class="navbar-nav ms-auto">
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a href="/welcome" class="nav-link">Post</a>
-              </li>
-              {% endif %}
-              <li class="nav-item">
-                <a href="" class="nav-link">About</a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">Contact</a>
-              </li>
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a href="/logout" class="nav-link">Logout</a>
-              </li>
-              {% else %}
-
-              <li class="nav-item">
-                <a href="/login" class="nav-link">Login</a>
-              </li>
-              <li class="nav-item">
-                <a href="/register" class="nav-link">Register</a>
-              </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-  
-      {% block header %}
-        {% endblock header %}
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-2" id="nav">
       <div class="container">
-        {% block content %}
-        {% endblock content %}
-      </div>
+        <!-- The navbar brand -->
+        <a href="/" class="navbar-brand fw-bold">Django Blog</a>
+        <!-- Bootstrap nav toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+          aria-controls="navmenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- The nav links -->
+        <div class="collapse navbar-collapse" id="navmenu">
+          <!-- If the user is not logged in, this nav links appears -->
+          <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="/welcome" class="nav-link">Post</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a href="" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Contact</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="/logout" class="nav-link">Logout</a>
+            </li>
+            {% else %}
 
+            <li class="nav-item">
+              <a href="/login" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="/register" class="nav-link">Register</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block header %} {% endblock header %}
+    <div class="container">{% block content %} {% endblock content %}</div>
 
     <!-- @@@@@@@@@@@@@@@@@@@@@@@ -->
 

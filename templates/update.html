@@ -1,45 +1,64 @@
-{% extends 'base.html' %} 
-{% load static %}
-{% static 'images' as baseURL %}
-{% block title %}HomePage{% endblock title %} 
-
-    {% block content %}
+{% extends 'base.html' %} {% load static %} {% static 'images' as baseURL %} {%
+block title %}HomePage{% endblock title %} {% block content %}
 
 <div>
-    {% for message in messages %}
-    <h5>
-        {{message}}
-    </h5>
-    {% endfor %}
+  {% for message in messages %}
+  <h5>{{message}}</h5>
+  {% endfor %}
 </div>
 
-    <div class="display m-auto mt-5">
-        
-        <p class="text-light fs-4 text-center">Update a post</p>
-        <form action="" method="post" class="p-4 rounded card" style="
-    background: #011e2c !important;
-        
-        ">
-            {% csrf_token %}
-            <input type="text" name="title" id=""  placeholder="Your title" class="form-control" value="{{ post.post_title }}" style="
-            background: #002538 !important;
-            box-shadow: none !important;
-            color: #ffff !important;
-            border-color: #096b9c;
-            "><br>
-            <input type="file" name="image" id="" class="form-control" style="
-            background: #002538 !important;
-            box-shadow: none !important;
-            color: #ffff !important;
-            border-color: #096b9c;
-            "><br>
-            <textarea name="content" id="" cols="30" rows="5" class="form-control" placeholder="Blog Post" style="
-            background: #002538 !important;
-            box-shadow: none !important;
-            color: #ffff !important;
-            border-color: #096b9c;
-            ">{{ post.post_content }}</textarea><br>
-            <input type="submit" value="Update" class="btn btn-success">
-        </form>
-    </div>
-    {% endblock content %}
+<div class="display m-auto mt-5">
+  <p class="text-light fs-4 text-center">Update a post</p>
+  <form
+    action=""
+    method="post"
+    class="p-4 rounded card"
+    style="background: #011e2c !important"
+  >
+    {% csrf_token %}
+    <input
+      type="text"
+      name="title"
+      id=""
+      placeholder="Your title"
+      class="form-control"
+      value="{{ post.post_title }}"
+      style="
+        background: #002538 !important;
+        box-shadow: none !important;
+        color: #ffff !important;
+        border-color: #096b9c;
+      "
+    /><br />
+    <input
+      type="file"
+      name="image"
+      id=""
+      class="form-control"
+      style="
+        background: #002538 !important;
+        box-shadow: none !important;
+        color: #ffff !important;
+        border-color: #096b9c;
+      "
+    /><br />
+    <textarea
+      name="content"
+      id=""
+      cols="30"
+      rows="5"
+      class="form-control"
+      placeholder="Blog Post"
+      style="
+        background: #002538 !important;
+        box-shadow: none !important;
+        color: #ffff !important;
+        border-color: #096b9c;
+      "
+    >
+{{ post.post_content }}</textarea
+    ><br />
+    <input type="submit" value="Update" class="btn btn-success" />
+  </form>
+</div>
+{% endblock content %}
