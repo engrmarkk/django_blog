@@ -15,22 +15,46 @@
 
     <div class="display m-auto mt-5">
         
-        <marquee class="h5 px-3 py-1 card bg-secondary text-white" style="width: fit-content;">Hey, {{user.username.title}}</marquee><br>
-        <p class="text-muted fs-4">Create a post</p>
-        <form action="" method="post" class="p-4 rounded card">
+    background: #011e2c !important;
+        <marquee class=" px-3 py-1 card text-white" style="width: fit-content; 
+    background: #011e2c !important;
+        
+        ">Hey, {{user.username.title}}</marquee><br>
+        <p class="text-light fs-4">Create a post</p>
+        <form action="" method="post" class="p-4 rounded card" style="
+    background: #011e2c !important;
+        ">
             {% csrf_token %}
-            <input type="text" name="title" id=""  placeholder="Your title" class="form-control"><br>
-            <input type="file" name="image" id="" class="form-control"><br>
-            <textarea name="content" id="" cols="30" rows="5" class="form-control" placeholder="Blog Post"></textarea><br>
+            <input type="text" name="title" id=""  placeholder="Your title" class="form-control" style="
+    background: #002538 !important;
+            box-shadow: none !important;
+            color: #ffff !important;
+            border-color: #096b9c;
+            "><br>
+            <input type="file" name="image" id="" class="form-control" style="
+            background: #002538 !important;
+            box-shadow: none !important;
+            color: #ffff !important;
+            border-color: #096b9c;
+            "><br>
+            <textarea name="content" id="" cols="30" rows="5" class="form-control" placeholder="Blog Post" style="
+            background: #002538 !important;
+            box-shadow: none !important;
+            color: #ffff !important;
+            border-color: #096b9c;
+            "></textarea><br>
             <input type="submit" value="Post" class="btn btn-success">
         </form>
         {% for blog in blogs reversed %}
-        <div class="card p-4 mt-5 mb-3">
+        <div class="card p-4 mt-5 mb-3" style="
+    background: #011e2c !important;
+        
+        ">
             {% if blog.img %}
             <img src="{{ blog.img.url }}" alt="">
             <hr>
             {% endif %}
-        <span class="h2">{{ blog.post_title.title }}</span> 
+        <span class="h2 text-warning">{{ blog.post_title.title }}</span> 
         <div class="d-flex align-items-center justify-content-between">
             <div>   
         <i class="fa fa-calendar-alt text-muted"></i>          
@@ -43,7 +67,7 @@
                 </a>
                 &nbsp;
                 <a href="/update/{{ blog.id }}">
-                    <i class="fa fa-pen-square text-primary h6"></i>
+                    <i class="fa fa-pen-square text-info h6"></i>
                 </a>
             </small>
         </div>

@@ -16,12 +16,15 @@
     <div class="m-auto mt-5 display">
         
         
-        <div class="card p-4 mt-5 mb-3">
+        <div class="card p-4 mt-5 mb-3" style="
+    background: #011e2c !important;
+        
+        ">
             {% if post.img %}
             <img src="{{ blog.img.url }}" alt="post image">
             <hr>
             {% endif %}
-        <span class="h2 text-muted">
+        <span class="h2 text-info">
             <i class="fa-solid fa-blog small"></i>
             
             {{ post.post_title.title }}</span> 
@@ -38,14 +41,14 @@
                 </a>
                 &nbsp;
                 <a href="/update/{{ post.id }}">
-                    <i class="fa fa-pen-square text-primary h6"></i>
+                    <i class="fa fa-pen-square text-info h6"></i>
                 </a>
             </small>
         </div>
         {% endif %}
             </div>
             <hr>
-            <p class="text-muted fw-bold">{{ post.post_content }}</p>
+            <p class="text-light ">{{ post.post_content }}</p>
         </div>
     </div>
     {% endblock content %}

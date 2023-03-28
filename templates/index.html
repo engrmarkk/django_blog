@@ -17,16 +17,18 @@
     </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <h4 class="mt-5 text-muted">Hey, {{user.username.title}}</h4>
+    <h4 class="mt-5 text-light">Hey, {{user.username.title}}</h4>
     {% endif %}
 
     <div class="row row-cols-lg-3 w-100 m-auto g-3">
         {% for data in datas %}
       <!-- first -->
     <div class="d-flex flex-column col-lg" >
-        <div class="p-3 border bg-white">
+        <div class="p-3 border text-white" style="border-color: #011e2c !important;
+    background: #011e2c !important;
+        ">
             <h6 class="">
-                <a href="/display/{{data.id}}" class="text-decoration-none text-muted">
+                <a href="/display/{{data.id}}" class="text-decoration-none text-info">
                     <i class="fa-solid fa-rss" style="font-size: .74rem;"></i>
                 {{ data.post_title.title }}
             </a>
@@ -34,13 +36,13 @@
             <div>
                 <i class="fa-solid fa-circle-user text-muted" style="font-size: .75rem;"></i>
                 {% if data.user.last_name %}
-                <small class="h6" style="font-size: .75rem;">{{ data.user.last_name.title }} {{ data.user.first_name.title }}</small>
+                <small class="h6 text-muted" style="font-size: .75rem;">{{ data.user.last_name.title }} {{ data.user.first_name.title }}</small>
                 {% else %}
-                <small class="h6" style="font-size: .75rem;">{{ data.user.username.title }}  </small>
+                <small class="h6 text-muted" style="font-size: .75rem;">{{ data.user.username.title }}  </small>
                 {% endif %}
               <small class="text-muted mx-4 small" style="font-size: .7rem;">{{ data.date }}</small>
             </div>
-            <p class="mt-4 border-top lead">
+            <p class="mt-4 border-top " style="border-color: rgba(128, 128, 128, 0.603) !important;">
                 {{ data.post_content|truncatewords:5 }}
             </p>
         </div>

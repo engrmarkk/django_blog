@@ -6,6 +6,14 @@ form{
     max-width: 900px;
 }
 
+body {
+    background: #002538 !important;
+  }
+  
+nav {
+    background: #011e2c !important;
+  }
+
 .display{
     max-width: 900px;
 }
