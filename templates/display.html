@@ -10,7 +10,7 @@
 <div class="m-auto mt-5 display">
   <div class="card p-4 mt-5 mb-3" style="background: #011e2c !important">
     {% if post.img %}
-    <img src="{{ blog.img.url }}" alt="post image" />
+    <img src="{{ post.img.url }}" alt="post image" class="img-thumbnail" />
     <hr />
     {% endif %}
     <span class="h2 text-info">
@@ -21,7 +21,20 @@
     <div class="d-flex align-items-center justify-content-between">
       <div style="font-size: 0.75rem">
         <i class="fa fa-calendar-alt text-muted"></i>
-        <small class="text-muted small fw-bold px-2"> {{post.date}} </small>
+        <small class="text-muted small fw-bold px-2"> {{post.date}} </small> <br>
+        <i
+            class="fa-solid fa-circle-user text-muted"
+            style="font-size: 0.75rem"
+          ></i>
+          {% if post.user.last_name %}
+          <small class="h6 text-muted px-2" style="font-size: 0.75rem"
+            > {{ post.user.last_name.title }} {{ post.user.first_name.title }}</small
+          >
+          {% else %}
+          <small class="h6 text-muted px-2" style="font-size: 0.75rem"
+            > {{ post.user.username.title }}
+          </small>
+          {% endif %}
       </div>
       {% if user == post.user %}
       <div class="">

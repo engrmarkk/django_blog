@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% static 'images' as baseURL %} {%
-block title %}HomePage{% endblock title %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% static 'images' as baseURL %} 
+{% block title %}HomePage{% endblock title %} {% block content %}
 
 <div>
   {% for message in messages %}
@@ -20,6 +20,7 @@ block title %}HomePage{% endblock title %} {% block content %}
     method="post"
     class="p-4 rounded card"
     style="background: #011e2c !important"
+    enctype="multipart/form-data"
   >
     {% csrf_token %}
     <input
@@ -64,12 +65,9 @@ block title %}HomePage{% endblock title %} {% block content %}
     ><br />
     <input type="submit" value="Post" class="btn btn-success" />
   </form>
+  {% if blogs %}
   {% for blog in blogs reversed %}
   <div class="card p-4 mt-5 mb-3" style="background: #011e2c !important">
-    {% if blog.img %}
-    <img src="{{ blog.img.url }}" alt="" />
-    <hr />
-    {% endif %}
     <span class="h2 text-warning">{{ blog.post_title.title }}</span>
     <div class="d-flex align-items-center justify-content-between">
       <div>
@@ -89,8 +87,13 @@ block title %}HomePage{% endblock title %} {% block content %}
       </div>
     </div>
     <hr />
-    <p class="text-muted">{{ blog.post_content }}</p>
+    {% if blog.img %}
+    <img src="{{ blog.img.url }}" alt="pic" class="text-white img-thumbnail" />
+    <hr class="border"/>
+    {% endif %}
+    <p class="text-light">{{ blog.post_content }}</p>
   </div>
   {% endfor %}
+  {% endif %}
 </div>
 {% endblock content %}

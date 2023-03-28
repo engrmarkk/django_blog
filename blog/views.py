@@ -9,7 +9,9 @@ import random
 
 # Create your views here.
 def index(request):
-    datas = list(BlogPost.objects.all())
+    datas = BlogPost.objects.all()
+    if datas:
+        datas = list(datas)
     random.shuffle(datas)
     return render(request, "index.html", {"datas": datas})
 
@@ -19,7 +21,7 @@ def welcomepage(request):
     blogs = BlogPost.objects.filter(user=request.user)
     if request.method == "POST":
         title = request.POST.get('title')
-        image = request.POST.get('image')
+        image = request.FILES.get('image')
         content = request.POST.get('content')
         if not all([title, content]):
             messages.error(request, "Title and Post content required")
@@ -110,7 +112,7 @@ def update_post(request, post_id):
     if request.method == "POST":
         title = request.POST.get("title")
         content = request.POST.get("content")
-        image = request.POST.get("image")
+        image = request.FILES.get("image")
         if title:
             post.post_title = title
         if content:

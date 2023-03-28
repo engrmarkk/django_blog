@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% static 'images' as baseURL %} {%
-block title %}HomePage{% endblock title %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% static 'images' as baseURL %} 
+{% block title %}HomePage{% endblock title %} {% block content %}
 
 <div>
   {% for message in messages %}
@@ -14,6 +14,7 @@ block title %}HomePage{% endblock title %} {% block content %}
     method="post"
     class="p-4 rounded card"
     style="background: #011e2c !important"
+    enctype="multipart/form-data"
   >
     {% csrf_token %}
     <input

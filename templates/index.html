@@ -16,6 +16,7 @@
   {% endif %}
 
   <div class="row row-cols-lg-3 w-100 m-auto g-3">
+    {% if datas %}
     {% for data in datas %}
     <!-- first -->
     <div class="d-flex flex-column col-lg">
@@ -47,8 +48,13 @@
             >{{ data.date }}</small
           >
         </div>
+        {% if data.img %}
+    <img src="{{ data.img.url }}" alt="pic" class="text-white" style="width: 100%;" />
+    {% else %}
+    <img src="media/blog_images/aa.png" alt="pic" class="text-white" style="width: 100%; height: 10.5rem;" />
+    {% endif %}
         <p
-          class="mt-4 border-top"
+          class="mt-4 border-top w-100"
           style="border-color: rgba(128, 128, 128, 0.603) !important"
         >
           {{ data.post_content|truncatewords:5 }}
@@ -56,6 +62,7 @@
       </div>
     </div>
     {% endfor %}
+    {% endif %}
   </div>
 </div>
 {% endblock content %}
