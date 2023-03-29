@@ -93,6 +93,29 @@
       </div>
     </nav>
 
+    <div>
+      {% for message in messages %}
+
+      {% if message.tags == 'error' %}
+      <div class="alert-dismissible fade show mb-4 m-auto small alert alert-danger" role="alert"
+        style="height: 3.5rem; transition: 0.6s; width: fit-content; padding-right: 6rem; padding-left: 6rem;">
+        {% elif message.tags == 'warning' %}
+        <div class="alert-dismissible fade show mb-4 m-auto small alert alert-warning" role="alert"
+        style="height: 3.5rem; transition: 0.6s; width: fit-content; padding-right: 6rem; padding-left: 6rem;">
+        {% elif message.tags == 'success' %}
+        <div class="alert-dismissible fade show mb-4 m-auto small alert alert-success" role="alert"
+        style="height: 3.5rem; transition: 0.6s; width: fit-content; padding-right: 6rem; padding-left: 6rem;">
+        {% else %}
+        <div class="alert-dismissible fade show mb-4 m-auto small alert alert-info" role="alert"
+        style="height: 3.5rem; transition: 0.6s; width: fit-content; padding-right: 6rem; padding-left: 6rem;">
+        {% endif %}
+        <p class="small text-center"><i class="fa fas fas fas fa-info-circle"></i>&nbsp;&nbsp;&nbsp;{{ message }}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      {% endfor %}
+    </div>
+
     {% block header %} {% endblock header %}
     <div class="container">{% block content %} {% endblock content %}
       <a href="#top" style="position: fixed; bottom: 0; margin-bottom: 1rem;"><i class="fa fas fa-arrow-circle-up text-white h3"></i></a>

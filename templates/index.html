@@ -5,17 +5,18 @@
 </div> -->
 {% endblock header %} {% block content %}
 <div>
-  {% if messages %}
+  <!-- {% if messages %}
   <div>
     {% for message in messages %}
     <h5>{{message}}</h5>
     {% endfor %}
   </div>
-  {% endif %} {% if user.is_authenticated %}
+  {% endif %}  -->
+  {% if user.is_authenticated %}
   <h4 class="mt-5 text-light">Hey, {{user.username.title}}</h4>
   {% endif %}
 
-  <div class="row row-cols-lg-3 w-100 m-auto g-3">
+  <div class="row row-cols-lg-3 w-100 m-auto g-3 my-1">
     {% if datas %}
     {% for data in datas %}
     <!-- first -->
