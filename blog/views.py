@@ -51,7 +51,7 @@ def login(request):
                 messages.info(request, "Logged in successfully")
                 return redirect("/")
             else:
-                messages.info(request, "wrong credentials")
+                messages.error(request, "wrong credentials")
                 return redirect("/login")
     return render(request, "login.html")
 
