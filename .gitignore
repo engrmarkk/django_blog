@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 .gitignore
 node_modules
-.vscode
+config.bat
